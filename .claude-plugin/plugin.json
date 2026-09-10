@@ -1,0 +1,29 @@
+{
+  "name": "adplane",
+  "displayName": "Adplane",
+  "version": "1.0.0",
+  "description": "Google Ads and Meta Ads (Facebook, Instagram) in one plugin: pull reports, find wasted spend, add negative keywords, and build paused campaigns from chat, on your own ad accounts. Connects to Adplane's remote MCP server (mcp.adplane.ai) with OAuth. Skills and commands only, no hooks, no telemetry. Everything the write tools create starts paused and nothing spends without an explicit yes.",
+  "author": {
+    "name": "Adplane",
+    "email": "support@adplane.ai",
+    "url": "https://adplane.ai"
+  },
+  "homepage": "https://adplane.ai",
+  "repository": "https://github.com/adplane/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "advertising",
+    "ads",
+    "google-ads",
+    "meta-ads",
+    "facebook-ads",
+    "instagram-ads",
+    "ppc",
+    "paid-media",
+    "performance-marketing",
+    "reporting",
+    "gaql",
+    "negative-keywords",
+    "mcp"
+  ]
+}

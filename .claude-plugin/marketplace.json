@@ -1,0 +1,27 @@
+{
+  "name": "adplane",
+  "metadata": {
+    "description": "Adplane for Claude: Google Ads and Meta Ads reporting and campaign management from chat."
+  },
+  "owner": {
+    "name": "Adplane",
+    "email": "support@adplane.ai"
+  },
+  "plugins": [
+    {
+      "name": "adplane",
+      "displayName": "Adplane",
+      "source": "./",
+      "description": "Google Ads and Meta Ads (Facebook, Instagram) in one plugin: pull reports, find wasted spend, add negative keywords, and build paused campaigns from chat, on your own ad accounts.",
+      "category": "marketing",
+      "keywords": ["advertising", "ads", "google-ads", "meta-ads", "facebook-ads", "instagram-ads", "ppc", "paid-media", "reporting"],
+      "author": {
+        "name": "Adplane",
+        "email": "support@adplane.ai"
+      },
+      "homepage": "https://adplane.ai",
+      "repository": "https://github.com/adplane/claude-plugin",
+      "license": "MIT"
+    }
+  ]
+}
