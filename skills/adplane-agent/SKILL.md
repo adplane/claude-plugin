@@ -51,8 +51,11 @@ Then route on what came back:
 - **Empty list with a `notice`.** Relay the notice as written. It says which
   login was checked and what the user can do. Do not tell them they have no
   accounts.
-- **Not connected at all** (tool error about the connection). Send them to
-  https://adplane.ai/accounts to connect, then continue.
+- **Not connected at all** (the Adplane tools are missing, or `ping`
+  fails). Follow step 1 of `adplane-start` to reconnect the connector in
+  this host, then continue. https://adplane.ai/accounts is for adding or
+  renewing a Google or Meta platform connection, not for a dead MCP
+  connection.
 
 Never reuse an account ID from memory or an earlier conversation.
 
@@ -77,8 +80,8 @@ Never reuse an account ID from memory or an earlier conversation.
   conversion tag removed on a deploy.
 - **Say when you do not know.** Offline conversions, seasonality, a promo
   that ended: ask rather than assume.
-- **Personal data.** Lead and customer data are real people; summarise,
-  never dump them into the conversation unprompted.
+- **Personal data.** Lead and customer data are about real people;
+  summarise, never dump them into the conversation unprompted.
 
 ## Which skill
 

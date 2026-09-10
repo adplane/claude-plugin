@@ -1,6 +1,8 @@
 # Prompt catalog
 
-One natural prompt per skill, with the skill expected to load. Check by hand
+At least one natural prompt per skill, with the skill expected to load
+(`adplane-agent` loads alongside every other skill and has its own row for
+the behaviour it owns). Check by hand
 in claude.ai chat (with the plugin installed) before a release: send the
 prompt in a fresh chat and confirm which skill Claude reached for and that
 the first tool calls match. Record the date and result in the last column.
@@ -18,6 +20,7 @@ the first tool calls match. Record the date and result in the last column.
 | "Run this GAQL for me: SELECT campaign.name ..." | adplane-google-ads | google_run_gaql | |
 | "What interests can I target for home coffee roasters?" | adplane-meta-ads | meta_search_targeting | |
 | "Show me how that ad looks on mobile" | adplane-meta-ads | meta_get_preview | |
+| "Pause the Brand campaign and raise Generic to 80 a day" | adplane-agent (with adplane-google-ads) | read the two campaigns back first, then one google_update_object per change, each after its own explicit yes, with the spend implication stated | |
 | "Which ad accounts can you see?" | adplane-start | google_list_accounts + meta_list_accounts | |
 | "My Meta account isn't showing up" | adplane-start | meta_list_accounts, relay the notice | |
 | "Turn the campaign on" (after a build) | adplane-build-campaign or adplane-google-ads / adplane-meta-ads | google_update_object / meta_update_object only after an explicit yes, with a plain statement that it will spend | |

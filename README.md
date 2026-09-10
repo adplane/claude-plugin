@@ -38,7 +38,7 @@ connected afterwards at [adplane.ai/accounts](https://adplane.ai/accounts).
 | `adplane-optimize` | Wasted spend, negatives, pacing, moving budget to what works |
 | `adplane-start` | Connecting, and what to do when an account is not showing |
 
-Commands: `/account-review [period]`, `/wasted-spend [platform]`,
+Commands: `/account-review [period]`, `/wasted-spend [platform or campaign]`,
 `/build-campaign <brief>`.
 
 ## Example prompts
@@ -78,10 +78,11 @@ claude plugin validate . --strict
 python3 scripts/lint.py
 ```
 
-`scripts/lint.py` checks frontmatter, skill size, the URL allowlist, and
-that every `google_*` / `meta_*` name mentioned in a skill exists in
-`scripts/tool-names.txt`. `tests/prompt-catalog.md` lists one natural
-prompt per skill with the skill expected to fire; check it by hand in
-Claude before a release.
+`scripts/lint.py` checks frontmatter, skill size, the URL allowlist, that
+no skill text carries em-dashes, prices, plan names, or upsell wording, and
+that every `google_*` / `meta_*` name mentioned in a skill, command, or
+reference exists in `scripts/tool-names.txt`. `tests/prompt-catalog.md`
+lists natural prompts with the skill expected to fire for each; check it by
+hand in Claude before a release.
 
 Documentation: https://adplane.ai/docs

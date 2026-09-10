@@ -88,7 +88,7 @@ The order is in `adplane-build-campaign`. Rules specific to Meta:
 - Media: `meta_upload_image` (public image URL, returns `image_hash`) and
   `meta_upload_video` (public video URL, returns `video_id`; wait while it
   processes). A video creative also needs a thumbnail image.
-- Body text: hard limit is long, but readers see about 125 characters
+- Body text: the hard limit is long, but readers see about 125 characters
   before "more". Lead with the offer.
 - `meta_get_preview` renders the creative or ad in a placement; the link
   expires within minutes, so use it to check, not to share.

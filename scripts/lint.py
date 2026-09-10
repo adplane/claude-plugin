@@ -12,8 +12,8 @@ Checks, per command (commands/*.md):
 Checks, across skills, commands, and references:
   - no em-dashes (house style)
   - every http(s) URL is on the allowlist
-  - no plan names or currency-prefixed prices (directory policy: skill text
-    may not sell)
+  - no plan names, currency-prefixed prices, or upsell wording (directory
+    policy: skill text may not sell)
   - every backticked google_* / meta_* / ping tool name exists in
     scripts/tool-names.txt (a renamed tool must not leave a dead reference)
 
@@ -37,7 +37,7 @@ TRIGGER_WORDS = ("Use when", "Use for", "Load for")
 FORBIDDEN_PATTERNS = [
     (re.compile(r"—"), "em-dash"),
     (re.compile(r"\$\s?\d"), "currency-prefixed price"),
-    (re.compile(r"\b(Pro|Plus|Max|Team|Enterprise|Starter|Free)\s+plan\b"), "plan name"),
+    (re.compile(r"\b(Pro|Plus|Max|Team|Enterprise|Starter|Free)\s+plan\b", re.I), "plan name"),
     (re.compile(r"\b(upgrade|pricing|/billing)\b", re.I), "upsell wording"),
 ]
 TOOL_REF = re.compile(r"`((?:google|meta)_[a-z_]+|ping)`")
@@ -116,7 +116,7 @@ def main() -> int:
         print("\n".join(findings))
         print(f"\n{len(findings)} finding(s)")
         return 1
-    print(f"ok: {len(skill_files)} skills, {len(command_files)} commands, {len(reference_files)} references")
+    print(f"ok: {len(skill_files)} skill(s), {len(command_files)} command(s), {len(reference_files)} reference(s)")
     return 0
 
 

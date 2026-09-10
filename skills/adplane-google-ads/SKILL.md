@@ -25,8 +25,8 @@ already converted from micros: a cost of 5.0 is five units, and a
 - `order_by`: `{field, direction}`; the field must be in `fields`.
 - `limit` sizes a page; `totals` cover every matched row. Pass the returned
   `cursor` for the next page.
-- **Call `google_get_report_schema` before any field you have not already
-  used successfully in this conversation.** Unknown fields are rejected.
+- **Call `google_get_report_schema` before using any field you have not
+  already used successfully in this conversation.** Unknown fields are rejected.
 
 Resources worth knowing: `campaign`, `ad_group`, `keyword_view`,
 `search_term_view`, `ad_group_ad`, `customer`, `geographic_view`,

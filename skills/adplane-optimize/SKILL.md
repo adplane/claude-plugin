@@ -61,8 +61,8 @@ Waste has a few shapes and they need different fixes:
    and gets worse before it gets better.
 
 Every proposal carries the arithmetic: "Move 30 a day from A (CPA 140,
-target 50) to B (CPA 38). Same total. If B holds, about 12 more leads a
-month." Then wait for the yes, apply one change, read it back, and report
+target 50) to B (CPA 38). Same total. If B holds, about 17 more leads a
+month: 900 moved buys 24 at B's CPA and gave up 6 at A's." Then wait for the yes, apply one change, read it back, and report
 the stored values.
 
 ## Pacing

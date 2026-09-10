@@ -1,8 +1,9 @@
 # GAQL cookbook for `google_run_gaql`
 
-Every query is a SELECT with an explicit date bound and a LIMIT of at most
-10000. Money fields ending in `_micros` come back converted to the account
-currency with the suffix removed. Replace `<start>` and `<end>` with
+Every query is a SELECT with a LIMIT, and every query that reads metrics
+or change events carries an explicit date bound (change events require
+both, with a LIMIT of at most 10000). Money fields ending in `_micros`
+come back converted to the account currency with the suffix removed. Replace `<start>` and `<end>` with
 `YYYY-MM-DD` dates. Prefer `google_run_report` unless the query needs
 something below.
 

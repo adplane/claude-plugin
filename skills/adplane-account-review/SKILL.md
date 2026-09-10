@@ -74,10 +74,11 @@ Before blaming the algorithm, look for the boring cause. On Google, a
 with `resource: "change_event"`, fields such as
 `change_event.change_date_time`, `change_event.change_resource_type`,
 `change_event.changed_fields`, `change_event.user_email`, and an explicit
-date range covering the last few days. On Meta, `meta_list_objects` with
-`object_type: "campaign"` shows `effective_status`, which reflects the
-parent's state and any review outcome; a disapproved ad shows up there, not
-in the insights.
+date range covering the last few days. On Meta, `meta_list_objects` shows
+`effective_status`, which reflects the parent's state and any review
+outcome; a review outcome is per object, so for a disapproved ad call it
+with `object_type: "ad"` (narrowed by `campaign_id`), not the campaign.
+Disapprovals do not show in the insights.
 
 ## Make it easier to look at, and recurring
 
