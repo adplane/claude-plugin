@@ -1,8 +1,8 @@
 # Adplane plugin for Claude
 
-Google Ads and Meta Ads (Facebook, Instagram) in one plugin. Pull reports,
-find wasted spend, add negative keywords, and build paused campaigns from
-chat, on your own ad accounts.
+Analyze and manage Google Ads and Meta Ads (Facebook, Instagram) from chat.
+Pull reports, find wasted spend, add negative keywords, and build paused
+campaigns on your own ad accounts.
 
 The plugin bundles the Adplane remote MCP connector (`https://mcp.adplane.ai`)
 with seven skills that teach Claude how a performance marketer works the
