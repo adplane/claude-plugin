@@ -5,8 +5,10 @@ find wasted spend, add negative keywords, and build paused campaigns from
 chat, on your own ad accounts.
 
 The plugin bundles the Adplane remote MCP connector (`https://mcp.adplane.ai`)
-with seven skills and three commands that teach Claude how a performance
-marketer works the accounts. It runs in Claude web and desktop chat, Claude
+with seven skills that teach Claude how a performance marketer works the
+accounts. Claude loads them on its own when the conversation calls for
+them, and the three workflow skills can also be run directly from the "/"
+menu with an argument. It runs in Claude web and desktop chat, Claude
 Cowork, and Claude Code.
 
 ## Install
@@ -38,8 +40,10 @@ connected afterwards at [adplane.ai/accounts](https://adplane.ai/accounts).
 | `adplane-optimize` | Wasted spend, negatives, pacing, moving budget to what works |
 | `adplane-start` | Connecting, and what to do when an account is not showing |
 
-Commands: `/account-review [period]`, `/wasted-spend [platform or campaign]`,
-`/build-campaign <brief>`.
+Run directly: `/adplane-account-review [period]`,
+`/adplane-optimize [platform or campaign]`, `/adplane-build-campaign <brief>`.
+In Claude Code these carry the plugin prefix, for example
+`/adplane:adplane-account-review last 7 days`.
 
 ## Example prompts
 
@@ -64,8 +68,8 @@ Commands: `/account-review [period]`, `/wasted-spend [platform or campaign]`,
 
 ## Data and privacy
 
-- **No hooks, no telemetry.** The plugin is skills, commands, and one
-  connector reference. The only network destination is Adplane's own server,
+- **No hooks, no telemetry.** The plugin is skills and one connector
+  reference. The only network destination is Adplane's own server,
   reached through the MCP connection you authorise.
 - Ad spend is billed by Google and Meta to your own accounts.
 - Privacy policy: https://adplane.ai/privacy. Terms: https://adplane.ai/terms.
@@ -80,7 +84,7 @@ python3 scripts/lint.py
 
 `scripts/lint.py` checks frontmatter, skill size, the URL allowlist, that
 no skill text carries em-dashes, prices, plan names, or upsell wording, and
-that every `google_*` / `meta_*` name mentioned in a skill, command, or
+that every `google_*` / `meta_*` name mentioned in a skill or
 reference exists in `scripts/tool-names.txt`. `tests/prompt-catalog.md`
 lists natural prompts with the skill expected to fire for each; check it by
 hand in Claude before a release.

@@ -1,11 +1,13 @@
 ---
 name: adplane-account-review
+argument-hint: <period, e.g. "last 7 days" or "this month">
 description: Review how Google Ads and Meta Ads accounts are doing, with spend, conversions, cost per result, ROAS, and what changed versus the previous period. Use when the user asks "how are my ads doing", "check my Google Ads account", "check my Facebook ads", "weekly report", "what's my ROAS", "why did CPA go up", or wants a scorecard across both platforms, even when they don't say Adplane. Read-only, changes nothing. Not for building campaigns or applying changes, use adplane-build-campaign or adplane-optimize.
 ---
 
 # Account review
 
-Follow `adplane-agent` first. This skill only reads.
+Follow `adplane-agent` first. This skill only reads. When invoked directly,
+$ARGUMENTS is the period (default: last 7 days against the 7 before).
 
 ## Get the numbers
 

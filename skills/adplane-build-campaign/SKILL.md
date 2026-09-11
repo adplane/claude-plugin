@@ -1,5 +1,6 @@
 ---
 name: adplane-build-campaign
+argument-hint: <platform and brief, e.g. "google, emergency plumber, Chicago, 50/day">
 description: Build a new Google Ads Search campaign or Meta (Facebook and Instagram) campaign end to end, created paused so nothing spends until the user turns it on. Use when the user wants to create, set up, launch, scaffold, or draft a campaign, ad group, ad set, ad, creative, headlines, or keywords on either platform, even when they don't say Adplane. Covers the order of calls, the Meta readiness check, image and video upload, and the ad preview. Not for reporting or optimising existing campaigns, use adplane-account-review or adplane-optimize.
 ---
 
@@ -7,7 +8,9 @@ description: Build a new Google Ads Search campaign or Meta (Facebook and Instag
 
 Follow `adplane-agent` first. Load `adplane-google-ads` or
 `adplane-meta-ads` for the platform's field rules. Everything below is
-created **paused**; the user turns it on, not you.
+created **paused**; the user turns it on, not you. When invoked directly,
+$ARGUMENTS is the brief: platform, what is being advertised, where, and the
+daily budget.
 
 ## Before you build anything
 

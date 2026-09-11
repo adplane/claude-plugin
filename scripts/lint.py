@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lint the Adplane plugin's skills and commands.
+"""Lint the Adplane plugin's skills.
 
 Checks, per skill (skills/<dir>/SKILL.md):
   - frontmatter present with `name` equal to the directory and a
@@ -7,9 +7,7 @@ Checks, per skill (skills/<dir>/SKILL.md):
     "Use for", or "Load for" (the model reads only the description when
     deciding whether to load a skill)
   - SKILL.md under the size ceiling
-Checks, per command (commands/*.md):
-  - frontmatter with a `description`
-Checks, across skills, commands, and references:
+Checks, across skills and references:
   - no em-dashes (house style)
   - every http(s) URL is on the allowlist
   - no plan names, currency-prefixed prices, or upsell wording (directory
@@ -68,7 +66,6 @@ def main() -> int:
     tool_names = set((ROOT / "scripts" / "tool-names.txt").read_text().split())
 
     skill_files = sorted((ROOT / "skills").glob("*/SKILL.md"))
-    command_files = sorted((ROOT / "commands").glob("*.md"))
     reference_files = sorted((ROOT / "skills").glob("*/references/*.md"))
 
     for path in skill_files:
@@ -89,13 +86,7 @@ def main() -> int:
         if size > SKILL_MAX_BYTES:
             findings.append(f"{rel}: {size} bytes exceeds {SKILL_MAX_BYTES}")
 
-    for path in command_files:
-        fm = frontmatter(path.read_text())
-        rel = path.relative_to(ROOT)
-        if fm is None or not fm.get("description"):
-            findings.append(f"{rel}: missing frontmatter description")
-
-    for path in skill_files + command_files + reference_files:
+    for path in skill_files + reference_files:
         text = path.read_text()
         rel = path.relative_to(ROOT)
         for pattern, label in FORBIDDEN_PATTERNS:
@@ -116,7 +107,7 @@ def main() -> int:
         print("\n".join(findings))
         print(f"\n{len(findings)} finding(s)")
         return 1
-    print(f"ok: {len(skill_files)} skill(s), {len(command_files)} command(s), {len(reference_files)} reference(s)")
+    print(f"ok: {len(skill_files)} skill(s), {len(reference_files)} reference(s)")
     return 0
 
 

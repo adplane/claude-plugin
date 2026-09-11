@@ -1,5 +1,6 @@
 ---
 name: adplane-optimize
+argument-hint: "<optional: google, meta, or a campaign name>"
 description: Find and cut wasted ad spend on Google Ads and Meta Ads, with search terms that never convert, negative keywords, budget pacing, pausing what does not work, and moving budget to what does. Use when the user asks about wasted spend, negatives, "which campaigns should I pause", "am I over budget", pacing, or reallocating budget, even when they don't say Adplane. Proposes each change with the numbers and applies it only after the user agrees to that specific change. Not for building new campaigns, use adplane-build-campaign.
 ---
 
@@ -7,7 +8,8 @@ description: Find and cut wasted ad spend on Google Ads and Meta Ads, with searc
 
 Follow `adplane-agent` first, and the platform skill for field rules. This
 skill proposes changes and applies them only after the user agrees to that
-specific change.
+specific change. When invoked directly, $ARGUMENTS narrows the pass to a
+platform or a campaign (default: every connected account on both platforms).
 
 ## Find the waste
 
@@ -62,8 +64,8 @@ Waste has a few shapes and they need different fixes:
 
 Every proposal carries the arithmetic: "Move 30 a day from A (CPA 140,
 target 50) to B (CPA 38). Same total. If B holds, about 17 more leads a
-month: 900 moved buys 24 at B's CPA and gave up 6 at A's." Then wait for the yes, apply one change, read it back, and report
-the stored values.
+month: 900 moved buys 24 at B's CPA and gave up 6 at A's." Then wait for
+the yes, apply one change, read it back, and report the stored values.
 
 ## Pacing
 
