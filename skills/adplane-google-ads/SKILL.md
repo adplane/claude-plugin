@@ -37,7 +37,9 @@ Resources worth knowing: `campaign`, `ad_group`, `keyword_view`,
 need (nested objects, `old_resource`/`new_resource` on change events,
 repeated fields such as RSA headlines). It is read-only by construction.
 Always include an explicit date bound and a `LIMIT` of at most 10000. See
-`references/gaql-cookbook.md` for tested queries.
+`references/gaql-cookbook.md` in this skill's folder for queries checked
+against the connector's field catalog; if you cannot open it, build the
+query from `google_get_report_schema`.
 
 Data reflects the account's time zone and may lag about three hours.
 
@@ -45,7 +47,7 @@ Data reflects the account's time zone and may lag about three hours.
 
 The search term report is where money leaks: `google_run_report` on
 `search_term_view` with `search_term_view.search_term`,
-`segments.keyword.info.match_type`, `metrics.cost_micros`,
+`segments.search_term_match_type`, `metrics.cost_micros`,
 `metrics.clicks`, `metrics.conversions`, ordered by cost. Look for
 "free", "jobs", "diy", competitor names, wrong locations, and adjacent
 products.

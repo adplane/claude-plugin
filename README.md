@@ -25,8 +25,10 @@ Cowork, and Claude Code.
   then `/mcp`, pick `adplane`, and authenticate.
 
 Sign-in is with Google and creates your Adplane account if you do not have
-one; it connects the Google Ads accounts that login can access. Meta is
-connected afterwards at [adplane.ai/accounts](https://adplane.ai/accounts).
+one. Google then asks separately for Google Ads access; if you skip that
+step, connect Google Ads later at
+[adplane.ai/accounts](https://adplane.ai/accounts), which is also where
+Meta is connected.
 
 ## What it does
 
@@ -63,8 +65,8 @@ In Claude Code these carry the plugin prefix, for example
   that rather than what it asked for.
 - Deletes are limited to campaigns that have never spent, and only when you
   ask. Everything else is paused or archived.
-- Read tools are safe to allow always; keep write tools on per-call
-  confirmation in your Claude permission settings.
+- Where your Claude client lets you allow tools individually, read tools
+  are safe to allow always; keep write tools on per-call confirmation.
 
 ## Data and privacy
 
@@ -78,9 +80,14 @@ In Claude Code these carry the plugin prefix, for example
 ## Development
 
 ```
-claude plugin validate . --strict
+claude plugin validate .claude-plugin/plugin.json --strict
+claude plugin validate .claude-plugin/marketplace.json --strict
+claude plugin validate skills --strict
 python3 scripts/lint.py
 ```
+
+(`claude plugin validate .` stops at the marketplace manifest, so run the
+three targets separately.)
 
 `scripts/lint.py` checks frontmatter, skill size, the URL allowlist, that
 no skill text carries em-dashes, prices, plan names, or upsell wording, and

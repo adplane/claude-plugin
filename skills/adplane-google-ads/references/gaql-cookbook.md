@@ -23,7 +23,7 @@ LIMIT 200
 ## Search terms with spend and no conversions
 
 ```
-SELECT search_term_view.search_term, segments.keyword.info.match_type,
+SELECT search_term_view.search_term, segments.search_term_match_type,
        campaign.name, ad_group.name,
        metrics.cost_micros, metrics.clicks, metrics.conversions
 FROM search_term_view
@@ -98,19 +98,42 @@ contain only the changed branch, for example
 30 days, and the query must carry both a date bound and a LIMIT or it is
 refused.
 
-## Performance Max search themes and placements
+## Performance Max search categories and placements
+
+`search_term_view` does not cover Performance Max. PMax search terms live
+on `campaign_search_term_insight`, which requires a filter on ONE campaign
+id on every query, reports no cost, and works in two steps. Step 1, the
+categories for a campaign:
 
 ```
-SELECT campaign.name, campaign_search_term_insight.category_label,
+SELECT campaign_search_term_insight.id,
+       campaign_search_term_insight.category_label,
        metrics.clicks, metrics.impressions, metrics.conversions
 FROM campaign_search_term_insight
-WHERE segments.date BETWEEN '<start>' AND '<end>'
+WHERE campaign_search_term_insight.campaign_id = <pmax campaign id>
+  AND segments.date BETWEEN '<start>' AND '<end>'
 LIMIT 500
 ```
 
+Step 2, the terms inside one category (the id filter and the paired
+segments are both required):
+
 ```
-SELECT campaign.name, performance_max_placement_view.display_name,
+SELECT segments.search_term, segments.search_subcategory,
+       metrics.clicks, metrics.impressions, metrics.conversions
+FROM campaign_search_term_insight
+WHERE campaign_search_term_insight.campaign_id = <pmax campaign id>
+  AND campaign_search_term_insight.id = <category id from step 1>
+  AND segments.date BETWEEN '<start>' AND '<end>'
+LIMIT 500
+```
+
+Placements are account-wide, not broken out by campaign:
+
+```
+SELECT performance_max_placement_view.display_name,
        performance_max_placement_view.placement_type,
+       performance_max_placement_view.target_url,
        metrics.impressions
 FROM performance_max_placement_view
 WHERE segments.date BETWEEN '<start>' AND '<end>'

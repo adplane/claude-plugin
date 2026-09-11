@@ -1,7 +1,7 @@
 ---
 name: adplane-build-campaign
 argument-hint: <platform and brief, e.g. "google, emergency plumber, Chicago, 50/day">
-description: Build a new Google Ads Search campaign or Meta (Facebook and Instagram) campaign end to end, created paused so nothing spends until the user turns it on. Use when the user wants to create, set up, launch, scaffold, or draft a campaign, ad group, ad set, ad, creative, headlines, or keywords on either platform, even when they don't say Adplane. Covers the order of calls, the Meta readiness check, image and video upload, and the ad preview. Not for reporting or optimising existing campaigns, use adplane-account-review or adplane-optimize.
+description: Build a new Google Ads Search campaign or Meta (Facebook and Instagram) campaign end to end, created paused so nothing spends until the user turns it on. Use when the user wants to create, set up, scaffold, or draft a campaign, ad group, ad set, ad, creative, headlines, or keywords on either platform, even when they don't say Adplane. Covers the order of calls, the Meta readiness check, image and video upload, and the ad preview. Not for reporting or optimising existing campaigns, use adplane-account-review or adplane-optimize.
 ---
 
 # Building a campaign
@@ -9,8 +9,8 @@ description: Build a new Google Ads Search campaign or Meta (Facebook and Instag
 Follow `adplane-agent` first. Load `adplane-google-ads` or
 `adplane-meta-ads` for the platform's field rules. Everything below is
 created **paused**; the user turns it on, not you. When invoked directly,
-$ARGUMENTS is the brief: platform, what is being advertised, where, and the
-daily budget.
+the argument ($ARGUMENTS) is the brief: platform, what is being advertised,
+where, and the daily budget.
 
 ## Before you build anything
 
@@ -48,8 +48,10 @@ targeting, the copy, and what is still missing. It is far easier to catch
    independently, so each must stand alone; vary the angle (offer, speed,
    proof, price, outcome) rather than repeating one idea. The response
    includes policy approval status; name any policy topics it reports.
-5. Read it back with `google_run_report` and confirm budget, status, and
-   targeting match the plan.
+5. Each create response is already Google's stored view of the object,
+   including whether the campaign targets all locations. Report those
+   values and confirm they match the plan; do not spend another operation
+   re-reading what the response already says.
 
 Do not set a target CPA or ROAS on a campaign with no conversion history;
 it has nothing to learn from. Start with clicks, then move to a target.
@@ -77,11 +79,12 @@ it has nothing to learn from. Start with clicks, then move to a target.
 5. Media: `meta_upload_image` from a public image URL returns an
    `image_hash`; `meta_upload_video` returns a `video_id` that may still be
    processing, so wait for its status before using it.
-6. `meta_create_ad_creative`: `page_id` from the top-level `pages` list in
-   `meta_list_accounts` (every Page there is usable), `message` (the body),
-   `headline`, `link`, and the media. Put the point in the first 125
+6. `meta_create_ad_creative`: a `name`, `page_id` from the top-level
+   `pages` list in `meta_list_accounts` (every Page there is usable),
+   `message` (the body), `headline`, `link`, and the media. Put the point in the first 125
    characters of the body; that is what people see before "more".
-7. `meta_create_ad` attaches the creative to the ad set.
+7. `meta_create_ad` attaches the creative to the ad set, with its own
+   `name`.
 8. `meta_get_preview` for the creative or ad and show the user how it
    renders. The preview link expires within minutes.
 9. Read it back with `meta_list_objects`.

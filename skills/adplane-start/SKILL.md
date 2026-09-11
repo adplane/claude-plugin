@@ -23,9 +23,11 @@ connect Adplane in this host:
   terminal commands to someone in a chat app.
 - **Claude Code:** run `/mcp`, find the `adplane` server, and authenticate.
 
-Sign-in is with Google. It also connects the Google Ads accounts that login
-can access. Meta is connected afterwards at https://adplane.ai/accounts by
-signing in with Facebook.
+Sign-in is with Google. Google then asks separately for Google Ads access;
+if that second step is skipped, the Adplane account exists but no Google
+Ads accounts are connected, and the grant is offered again at
+https://adplane.ai/accounts. Meta is connected there too, by signing in
+with Facebook.
 
 ## Step 2: which accounts are reachable?
 
@@ -62,8 +64,9 @@ Say what the first useful thing is, given what they asked for, and do it:
 
 - Everything created through Adplane starts paused; nothing spends until
   the user explicitly turns it on.
-- Read tools are safe to allow always; write tools deserve per-call
-  confirmation in the host's permission settings.
+- Where the host lets the user allow tools individually (Claude Code
+  does), read tools are safe to allow always and write tools deserve
+  per-call confirmation.
 - Ad spend is billed by Google and Meta to the user's own accounts.
 - Meta connections lapse after about 60 days and are renewed at
   https://adplane.ai/accounts; `meta_list_accounts` reports the expiry.

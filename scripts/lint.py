@@ -13,7 +13,8 @@ Checks, across skills and references:
   - no plan names, currency-prefixed prices, or upsell wording (directory
     policy: skill text may not sell)
   - every backticked google_* / meta_* / ping tool name exists in
-    scripts/tool-names.txt (a renamed tool must not leave a dead reference)
+    scripts/tool-names.txt, a hand-kept copy of the server's tool list;
+    regenerate it from the connector's metadata snapshot after any rename
 
 Exit 1 on any finding.
 """
@@ -36,7 +37,7 @@ FORBIDDEN_PATTERNS = [
     (re.compile(r"—"), "em-dash"),
     (re.compile(r"\$\s?\d"), "currency-prefixed price"),
     (re.compile(r"\b(Pro|Plus|Max|Team|Enterprise|Starter|Free)\s+plan\b", re.I), "plan name"),
-    (re.compile(r"\b(upgrade|pricing|/billing)\b", re.I), "upsell wording"),
+    (re.compile(r"\b(upgrade|pricing)\b|/billing", re.I), "upsell wording"),
 ]
 TOOL_REF = re.compile(r"`((?:google|meta)_[a-z_]+|ping)`")
 URL = re.compile(r"https?://[^\s)\]>`\"']+")
@@ -63,10 +64,16 @@ def frontmatter(text: str) -> dict[str, str] | None:
 
 def main() -> int:
     findings: list[str] = []
-    tool_names = set((ROOT / "scripts" / "tool-names.txt").read_text().split())
+    names_file = ROOT / "scripts" / "tool-names.txt"
+    if not names_file.exists():
+        print(f"{names_file.relative_to(ROOT)}: missing")
+        return 1
+    tool_names = set(names_file.read_text().split())
 
     skill_files = sorted((ROOT / "skills").glob("*/SKILL.md"))
     reference_files = sorted((ROOT / "skills").glob("*/references/*.md"))
+    if not skill_files:
+        findings.append("skills/: no SKILL.md files found")
 
     for path in skill_files:
         text = path.read_text()
@@ -94,7 +101,7 @@ def main() -> int:
                 line = text.count("\n", 0, m.start()) + 1
                 findings.append(f"{rel}:{line}: {label}: {m.group(0)!r}")
         for m in URL.finditer(text):
-            url = m.group(0).rstrip(".,;:")
+            url = m.group(0).rstrip(".,;:/")
             if url not in ALLOWED_URLS:
                 line = text.count("\n", 0, m.start()) + 1
                 findings.append(f"{rel}:{line}: URL not on allowlist: {url}")

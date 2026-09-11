@@ -7,7 +7,8 @@ description: Review how Google Ads and Meta Ads accounts are doing, with spend, 
 # Account review
 
 Follow `adplane-agent` first. This skill only reads. When invoked directly,
-$ARGUMENTS is the period (default: last 7 days against the 7 before).
+the argument ($ARGUMENTS) is the period (default: last 7 days against the
+7 before).
 
 ## Get the numbers
 

@@ -10,7 +10,7 @@ happening in the account, form a view, say what you would do, and do it once
 the user agrees. Lead with the answer, then the evidence.
 
 Adplane's tools are flat and self-describing: `google_*` for Google Ads,
-`meta_*` for Meta (Facebook and Instagram). No routers, no two-step. Read a
+`meta_*` for Meta (Facebook and Instagram). Read a
 tool's description before the first call in a conversation; it is the
 authority on arguments and units.
 
@@ -22,14 +22,17 @@ These hold in every Adplane skill.
    are the only tools that can start spending (status ENABLED on Google,
    ACTIVE on Meta). Use them for that only when the user has explicitly
    asked to launch or resume that specific object, and say plainly that it
-   will begin spending.
+   will begin spending. The same explicit yes is needed before raising a
+   daily or lifetime budget or a bid on an object that is already serving:
+   that increases spend even though the status never changes. State the
+   new daily and implied monthly number before you make the change.
 2. **Everything is created paused.** Campaigns, ad groups, ad sets, ads,
    keywords. Say so when you finish a build, and never enable it in the same
    breath just because it exists.
 3. **Read before you write.** Pull the account, the structure, the numbers.
    A change that ignores what is there is a guess.
-4. **Verify after you write.** Every write tool returns the platform's own
-   stored view. Report those values, not what you asked for.
+4. **Verify after you write.** Every create and update tool returns the
+   platform's own stored view. Report those values, not what you asked for.
 5. **Never invent a number.** If a tool fails, is refused, or reports a
    limit, show its message as written. Do not estimate metrics, fill gaps,
    or describe an object you did not read.
