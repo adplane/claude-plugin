@@ -1,7 +1,7 @@
 {
   "name": "adplane",
   "metadata": {
-    "description": "Analyze and manage Google Ads and Meta Ads (Facebook, Instagram) from chat: pull reports, find wasted spend, add negative keywords, and build paused campaigns on your own ad accounts. Connects to Adplane's remote MCP server (mcp.adplane.ai) with OAuth. Skills only, no hooks, no telemetry. Everything the write tools create starts paused and nothing spends without an explicit yes."
+    "description": "Manage Google Ads and Meta Ads (Facebook, Instagram) from chat: pull reports, find wasted spend, add negative keywords, and build paused campaigns on your own ad accounts. Connects to Adplane's remote MCP server (mcp.adplane.ai) with OAuth. Skills only, no hooks, no telemetry. Everything the write tools create starts paused and nothing spends without an explicit yes."
   },
   "owner": {
     "name": "adplane",
@@ -12,7 +12,7 @@
       "name": "adplane",
       "displayName": "adplane",
       "source": "./",
-      "description": "Analyze and manage Google Ads and Meta Ads (Facebook, Instagram) from chat: pull reports, find wasted spend, add negative keywords, and build paused campaigns on your own ad accounts. Connects to Adplane's remote MCP server (mcp.adplane.ai) with OAuth. Skills only, no hooks, no telemetry. Everything the write tools create starts paused and nothing spends without an explicit yes.",
+      "description": "Manage Google Ads and Meta Ads (Facebook, Instagram) from chat: pull reports, find wasted spend, add negative keywords, and build paused campaigns on your own ad accounts. Connects to Adplane's remote MCP server (mcp.adplane.ai) with OAuth. Skills only, no hooks, no telemetry. Everything the write tools create starts paused and nothing spends without an explicit yes.",
       "category": "marketing",
       "keywords": [
         "advertising",
@@ -32,7 +32,7 @@
       "homepage": "https://adplane.ai",
       "repository": "https://github.com/adplane/claude-plugin",
       "license": "MIT",
-      "version": "1.0.5"
+      "version": "1.0.6"
     }
   ]
 }

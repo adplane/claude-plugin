@@ -1,6 +1,6 @@
 # Adplane plugin for Claude
 
-Analyze and manage Google Ads and Meta Ads (Facebook, Instagram) from chat.
+Manage Google Ads and Meta Ads (Facebook, Instagram) from chat.
 Pull reports, find wasted spend, add negative keywords, and build paused
 campaigns on your own ad accounts.
 
